@@ -18,9 +18,13 @@ namespace _111
             InitializeComponent();
         }
 
+       
+
+
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
         }
 
         private DataTable GetComments()
@@ -73,7 +77,36 @@ namespace _111
 
         }
 
+       
+        public string conString, CommandText;
+        private void button4_Click(object sender, EventArgs e)
+        {
+            conString = "Database=alien;Data Source=192.186.246.132;User Id=dima;Password=1zbMhXzF6v";
+            MySqlConnection con = new MySqlConnection(conString);
+            try
+            {
+                con.Open();
+                MessageBox.Show("Підключення пройшло успішно. Тепер натисніть 'Завантаження бази даних в програму'");
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show("Збій підключення! ");
+            }
+            con.Close();
+        }
 
+
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedTab = tabControl1.TabPages["TabPage1"];
+        }
+
+
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedTab = tabControl1.TabPages["TabPage2"];
+        }
     }
-
 }
