@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.IO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,9 +18,6 @@ namespace _111
         {
             InitializeComponent();
         }
-
-       
-
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -57,6 +55,7 @@ namespace _111
                             dt.Load(dr);
                         }
                     }
+
                 }
 
                 catch (Exception ex)
@@ -70,6 +69,7 @@ namespace _111
         private void button1_Click(object sender, EventArgs e)
         {
             dataGridView1.DataSource = GetComments();
+            timer1.Enabled = true;
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)
@@ -77,7 +77,6 @@ namespace _111
 
         }
 
-       
         public string conString, CommandText;
         private void button4_Click(object sender, EventArgs e)
         {
@@ -95,18 +94,88 @@ namespace _111
             con.Close();
         }
 
-
-
         private void button5_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedTab = tabControl1.TabPages["TabPage1"];
         }
 
-
-
         private void button6_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedTab = tabControl1.TabPages["TabPage2"];
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            double C; 
+            int P = Convert.ToInt32(textBox3.Text);
+            int Y = Convert.ToInt32(textBox4.Text);
+            double I = Convert.ToDouble(textBox5.Text);
+            int R = Convert.ToInt32(textBox6.Text);
+            int S = Convert.ToInt32(textBox8.Text);
+            C = ((Y * I * S) / (P + R)) * 100;
+            textBox2.Text = C.ToString();
+         }
+
+        public void textBox3_KeyPress_1(object sender, KeyPressEventArgs e)
+            {  
+              if (e.KeyChar != 8 && (e.KeyChar < 48 || e.KeyChar > 57))  
+       e.Handled = true;  
+            }  
+            
+        private void закритиПрограмуToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Form1.ActiveForm.Close();
+        }
+
+        private void інструкціяToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+            MessageBox.Show("Ласкаво просимо до нашої програми, вона допоможе вам вибрати оптимальний варіант для купівлі автомобіля. Для початку роботи з програмою завантажте базу даних в програму і далі все просто. Ввести дані і програма знайде оптимальний варіант згідно заданих параметрів");
+
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            progressBar1.Increment(+70);
+            if (progressBar1.Value == 100)
+            {
+                timer1.Enabled = false;
+            }
+        }
+
+        private void textBox4_KeyPress(object sender, KeyPressEventArgs e)
+        {
+                if (e.KeyChar != 8 && (e.KeyChar < 48 || e.KeyChar > 57))
+                    e.Handled = true;  
+        }
+
+        private void textBox5_KeyPress(object sender, KeyPressEventArgs e)
+        {
+                if (((e.KeyChar != 8) && (e.KeyChar != 44)) && (e.KeyChar < 48 || e.KeyChar > 57))
+                    e.Handled = true;  
+        }
+
+        private void textBox6_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar != 8 && (e.KeyChar < 48 || e.KeyChar > 57))
+                e.Handled = true;
+        }
+
+        private void textBox8_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar != 8 && (e.KeyChar < 48 || e.KeyChar > 57))
+                e.Handled = true;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedTab = tabControl1.TabPages["TabPage1"];
+            dataGridView1.DataSource = GetComments();
+            timer1.Enabled = true;
+
+        }  
     }
 }
+        
+    
+

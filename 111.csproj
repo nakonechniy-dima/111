@@ -35,6 +35,9 @@
     <Reference Include="mysql.data">
       <HintPath>E:\Новая папка\mysql.data.dll</HintPath>
     </Reference>
+    <Reference Include="mysql.visualstudio">
+      <HintPath>E:\Новая папка\mysql.visualstudio.dll</HintPath>
+    </Reference>
     <Reference Include="mysql.web">
       <HintPath>E:\Новая папка\mysql.web.dll</HintPath>
       <Private>False</Private>
